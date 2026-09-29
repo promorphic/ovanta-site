@@ -1,0 +1,11 @@
+{
+  "name": "Ovanta",
+  "short_name": "Ovanta",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#d6e0fb",
+  "background_color": "#ffffff",
+  "display": "browser"
+}
