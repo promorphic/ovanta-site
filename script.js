@@ -41,14 +41,14 @@ if (motionOK) {
     if (visible) {
       rows.forEach((r, i) => {
         // Slow ambient wave travelling down the stack
-        let target = r.base + 0.025 * Math.sin(t * 0.0011 - i * 0.42);
+        let target = r.base + 0.025 * Math.sin(t * 0.0018 - i * 0.42);
         // Pull bars near the pointer toward its x position
         if (pointer.active) {
           const d = r.y - pointer.y;
           const k = Math.exp(-(d * d) / (2 * spread * spread));
           target += (Math.min(Math.max(pointer.x, 0.15), 1) - target) * k;
         }
-        r.cur += (target - r.cur) * 0.09;
+        r.cur += (target - r.cur) * 0.13;
         r.bar.style.transform = `scaleX(${r.cur.toFixed(4)})`;
       });
     }
