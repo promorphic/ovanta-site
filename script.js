@@ -1,18 +1,61 @@
-// Hero line pattern: thick lines with a ragged edge, thin lines running through
+// Hero line pattern: thick bars with a ragged edge that ripple toward the pointer
 const heroLines = document.getElementById("heroLines");
+const heroLeft = heroLines.parentElement;
+const motionOK = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let rows = [];
 const buildLines = () => {
-  const rows = Math.max(18, Math.round(heroLines.offsetHeight / 18));
+  const count = Math.max(18, Math.round(heroLines.offsetHeight / 18));
   heroLines.innerHTML = "";
-  for (let i = 0; i < rows; i++) {
-    const w = 72 + ((i * 37) % 11) + (i % 3 === 0 ? 3 : 0); // deterministic 72–86%
+  rows = [];
+  for (let i = 0; i < count; i++) {
+    const base = (72 + ((i * 37) % 11) + (i % 3 === 0 ? 3 : 0)) / 100; // deterministic 0.72–0.86
     const ln = document.createElement("div");
     ln.className = "ln";
-    ln.style.setProperty("--w", w + "%");
+    const bar = document.createElement("span");
+    bar.style.transform = `scaleX(${base})`;
+    ln.appendChild(bar);
     heroLines.appendChild(ln);
+    rows.push({ bar, base, cur: base, y: 0 });
   }
+  const top = heroLines.getBoundingClientRect().top;
+  rows.forEach((r) => { const b = r.bar.getBoundingClientRect(); r.y = b.top - top + b.height / 2; });
 };
 buildLines();
 window.addEventListener("resize", buildLines);
+
+if (motionOK) {
+  const pointer = { x: 0, y: 0, active: false };
+  heroLeft.addEventListener("pointermove", (e) => {
+    const r = heroLines.getBoundingClientRect();
+    pointer.x = (e.clientX - r.left) / r.width;
+    pointer.y = e.clientY - r.top;
+    pointer.active = true;
+  });
+  heroLeft.addEventListener("pointerleave", () => { pointer.active = false; });
+
+  let visible = true;
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(heroLeft);
+
+  const spread = 90; // px radius of the ripple
+  const tick = (t) => {
+    if (visible) {
+      rows.forEach((r, i) => {
+        // Slow ambient wave travelling down the stack
+        let target = r.base + 0.025 * Math.sin(t * 0.0011 - i * 0.42);
+        // Pull bars near the pointer toward its x position
+        if (pointer.active) {
+          const d = r.y - pointer.y;
+          const k = Math.exp(-(d * d) / (2 * spread * spread));
+          target += (Math.min(Math.max(pointer.x, 0.15), 1) - target) * k;
+        }
+        r.cur += (target - r.cur) * 0.09;
+        r.bar.style.transform = `scaleX(${r.cur.toFixed(4)})`;
+      });
+    }
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
 
 // Floating nav shadow
 const nav = document.getElementById("nav");

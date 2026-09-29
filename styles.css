@@ -104,7 +104,7 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 700; letter-spacing: -.01em
 .hero-left { position: relative; display: grid; place-items: center; padding: 110px 40px 56px; overflow: hidden; background: #fff; }
 .hero-lines { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 14px 0; }
 .hero-lines .ln { position: relative; height: 7px; }
-.hero-lines .ln::before { content: ""; position: absolute; left: 0; top: 0; height: 7px; width: var(--w); background: var(--blue); }
+.hero-lines .ln span { position: absolute; left: 0; top: 0; width: 100%; height: 7px; background: var(--blue); transform-origin: left center; will-change: transform; }
 .hero-lines .ln::after { content: ""; position: absolute; left: 0; right: 0; top: 2.5px; height: 2px; background: var(--blue); }
 
 .hero-panel { display: flex; align-items: center; padding: 120px 72px 72px; background: var(--blue-soft); }
@@ -112,6 +112,7 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 700; letter-spacing: -.01em
 h1 { line-height: .98; letter-spacing: -.035em; }
 h1 .light { font-size: clamp(38px, 4.4vw, 58px); letter-spacing: -.02em; }
 h1 strong { font-size: clamp(54px, 6.6vw, 92px); font-weight: 700; }
+.hl-word { display: inline-block; margin: 10px 0 0 -6px; padding: 0 16px 6px 10px; border-radius: 14px; background: var(--blue); color: #fff; box-shadow: 0 16px 32px -14px rgba(63,95,212,.6); }
 .lead { margin-top: 24px; max-width: 440px; font-family: var(--font-2); font-size: 18px; line-height: 1.55; color: var(--ink-2); }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 32px; }
 
