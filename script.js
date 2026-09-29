@@ -75,7 +75,7 @@ links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => set
 
 // Reveal on scroll
 const revealTargets = document.querySelectorAll(
-  ".section-head, .stat, .thesis-card, .feature, .case, .table-wrap, .code-card, .chart-card, .trust, .banner"
+  ".section-head, .stat, .thesis-card, .feature, .case, .table-wrap, .code-card, .source-card, .trust, .banner"
 );
 revealTargets.forEach((el) => el.classList.add("reveal"));
 const io = new IntersectionObserver(
@@ -85,30 +85,6 @@ const io = new IntersectionObserver(
   { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
 );
 revealTargets.forEach((el) => io.observe(el));
-
-// Count-up stats
-const fmt = (n, decimals) => n.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-const statIO = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (!e.isIntersecting) return;
-    const el = e.target;
-    const target = parseFloat(el.dataset.count);
-    const decimals = (el.dataset.count.split(".")[1] || "").length;
-    const prefix = el.dataset.prefix || "";
-    const suffix = el.dataset.suffix || "";
-    const start = performance.now();
-    const dur = 1400;
-    const tick = (t) => {
-      const p = Math.min((t - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = prefix + fmt(target * eased, decimals) + suffix;
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-    statIO.unobserve(el);
-  });
-}, { threshold: 0.5 });
-document.querySelectorAll("[data-count]").forEach((el) => statIO.observe(el));
 
 // CTA form
 const form = document.getElementById("ctaForm");
