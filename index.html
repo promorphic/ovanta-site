@@ -5,36 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ovanta — Stablecoin payments for AI agents</title>
   <meta name="description" content="Ovanta is the payments layer for the agent economy. Programmable stablecoin wallets, spend policies and instant settlement for AI agents." />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="container nav-inner">
+  <!-- NAV (floating pill) -->
+  <header class="nav" id="nav">
+    <div class="nav-pill">
       <a href="#" class="logo" aria-label="Ovanta home">
-        <span class="logo-mark">
-          <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
-            <circle cx="16" cy="16" r="12.5" fill="none" stroke="currentColor" stroke-width="3.5"/>
-            <circle cx="16" cy="16" r="4.5" fill="currentColor"/>
-          </svg>
-        </span>
-        Ovanta
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+          <circle cx="16" cy="16" r="12.5" fill="none" stroke="currentColor" stroke-width="3.5"/>
+          <circle cx="16" cy="16" r="4.5" fill="currentColor"/>
+        </svg>
+        ovanta
       </a>
       <nav class="nav-links" id="navLinks">
         <a href="#thesis">Thesis</a>
         <a href="#platform">Platform</a>
         <a href="#developers">Developers</a>
         <a href="#use-cases">Use cases</a>
-        <a href="#contact" class="nav-mobile-cta btn btn-primary">Get API keys</a>
+        <a href="#contact" class="nav-mobile-cta btn btn-dark">Get API keys</a>
       </nav>
-      <div class="nav-cta">
-        <a href="#" class="btn btn-ghost">Sign in</a>
-        <a href="#contact" class="btn btn-primary">Get API keys</a>
-      </div>
+      <a href="#contact" class="btn btn-dark btn-sm nav-cta">Get API keys</a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span>
       </button>
@@ -43,84 +40,38 @@
 
   <main>
 
-  <!-- HERO -->
+  <!-- HERO: split, line pattern + pastel panel -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <a href="#platform" class="eyebrow">
-          <span class="eyebrow-tag">New</span>
-          Agent wallets now live on 6 chains
-          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <h1>Agents will pay.<br /><span class="grad">In stablecoins.</span></h1>
-        <p class="lead">
-          AI agents are becoming economic actors. They need money that is programmable,
-          global, always on and cheap enough to spend a fraction of a cent at a time.
-          Ovanta gives every agent a wallet, a budget and instant settlement in USD stablecoins.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary btn-lg">Start building</a>
-          <a href="#thesis" class="btn btn-outline btn-lg">Read the thesis</a>
-        </div>
-        <dl class="hero-meta">
-          <div><dt>Settlement</dt><dd>&lt; 400ms</dd></div>
-          <div><dt>Min. payment</dt><dd>$0.0001</dd></div>
-          <div><dt>Availability</dt><dd>24/7/365</dd></div>
-        </dl>
-      </div>
-
-      <div class="hero-visual">
-        <div class="card feed">
-          <div class="feed-top">
-            <div class="feed-title">
-              <span class="feed-avatar">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01"/></svg>
-              </span>
-              <div>
-                <b>Agent treasury</b>
-                <small>acme-prod · 12 agents</small>
-              </div>
-            </div>
-            <span class="pill pill-green"><i></i>Live</span>
-          </div>
-
-          <div class="feed-balance">
-            <div class="balance">$48,213<span>.07</span></div>
-            <div class="balance-meta">
-              <span class="chip">USDC</span>
-              <span class="up">+ $1,284.20 today</span>
-            </div>
-          </div>
-
-          <div class="feed-sub">
-            <span>Recent payments</span>
-            <span>Amount</span>
-          </div>
-          <ul class="tx-list" id="txList">
-            <li><span class="tx-icon i1">API</span><div><b>research-agent-07</b><small>weather.data · per request</small></div><span class="amt">−$0.0021</span></li>
-            <li><span class="tx-icon i2">TRV</span><div><b>travel-concierge</b><small>Hotel deposit · Lisbon</small></div><span class="amt">−$184.00</span></li>
-            <li><span class="tx-icon i3">GPU</span><div><b>gpu-broker</b><small>Compute · 12 GPU-min</small></div><span class="amt">−$0.48</span></li>
-            <li><span class="tx-icon i4">IN</span><div><b>content-agent</b><small>Licensing fee received</small></div><span class="amt pos">+$3.20</span></li>
-          </ul>
-
-          <div class="feed-foot">
-            <div class="feed-foot-row">
-              <span>Daily policy limit</span>
-              <span><b>$620</b> of $1,000</span>
-            </div>
-            <div class="bar"><i style="width:62%"></i></div>
-          </div>
-        </div>
-
-        <div class="card settle-chip">
-          <span class="settle-icon">
-            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
+    <div class="hero-left">
+      <div class="hero-lines" id="heroLines" aria-hidden="true"></div>
+      <div class="feed">
+        <div class="feed-top">
           <div>
-            <b>Settled in 0.38s</b>
-            <small>Network fee $0.00002</small>
+            <small>Agent treasury</small>
+            <div class="balance">$48,213<span>.07</span></div>
           </div>
+          <span class="live"><i></i>Live</span>
+        </div>
+        <ul class="tx-list" id="txList">
+          <li><span class="tx-icon c-blue">API</span><div><b>research-agent-07</b><small>weather.data · per request</small></div><span class="amt">−$0.0021</span></li>
+          <li><span class="tx-icon c-yellow">TRV</span><div><b>travel-concierge</b><small>Hotel deposit · Lisbon</small></div><span class="amt">−$184.00</span></li>
+          <li><span class="tx-icon c-purple">GPU</span><div><b>gpu-broker</b><small>Compute · 12 GPU-min</small></div><span class="amt">−$0.48</span></li>
+          <li><span class="tx-icon c-green">IN</span><div><b>content-agent</b><small>Licensing fee received</small></div><span class="amt pos">+$3.20</span></li>
+        </ul>
+        <div class="feed-foot">
+          <div class="feed-foot-row"><span>Daily policy limit</span><span><b>$620</b> / $1,000</span></div>
+          <div class="bar"><i style="width:62%"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="hero-copy">
+        <h1><span class="light">Agents will pay</span><br /><strong>In Stablecoins</strong></h1>
+        <p class="lead">The payments layer for the agent economy. Wallets, budgets and instant settlement in USD stablecoins.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-dark">Get in touch</a>
+          <a href="#thesis" class="btn btn-link">Read the thesis →</a>
         </div>
       </div>
     </div>
@@ -128,27 +79,40 @@
 
   <!-- LOGOS -->
   <section class="logos">
-    <div class="container">
-      <p class="logos-label">Trusted by teams building the agent economy</p>
-      <div class="logo-row">
-        <span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="currentColor"/></svg>Lumen AI</span>
-        <span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M2 17L10 3l8 14z" fill="currentColor"/></svg>Northwind</span>
-        <span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3" fill="currentColor"/></svg>Parallax</span>
-        <span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M10 2l8 8-8 8-8-8z" fill="currentColor"/></svg>Kestrel</span>
-        <span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="7" cy="10" r="5" fill="currentColor"/><circle cx="13" cy="10" r="5" fill="currentColor" opacity=".55"/></svg>Quanta Labs</span>
-        <span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 3h3v14H4zM13 3h3v14h-3zM7 8.5h6v3H7z" fill="currentColor"/></svg>Helix</span>
+    <div class="container logo-row">
+      <p>Trusted by teams building the agent economy</p>
+      <div class="logo-list">
+        <span>Lumen AI</span><span>Northwind</span><span>Parallax</span><span>Kestrel</span><span>Quanta Labs</span><span>Helix</span>
       </div>
     </div>
   </section>
 
-  <!-- STATS -->
+  <!-- STATS: pastel cards -->
   <section class="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat"><div class="stat-num" data-count="2.4" data-prefix="$" data-suffix="B">$2.4B</div><div class="stat-label">Agent payment volume processed</div></div>
-        <div class="stat"><div class="stat-num" data-count="310" data-suffix="M+">310M+</div><div class="stat-label">Agent-initiated transactions</div></div>
-        <div class="stat"><div class="stat-num" data-count="18000" data-suffix="+">18,000+</div><div class="stat-label">Autonomous agents with wallets</div></div>
-        <div class="stat"><div class="stat-num" data-count="140" data-suffix="+">140+</div><div class="stat-label">Countries reached, zero FX friction</div></div>
+    <div class="container stats-grid">
+      <div class="stat bg-purple">
+        <small>Volume processed</small>
+        <div class="stat-num t-purple" data-count="2.4" data-prefix="$" data-suffix="B">$2.4B</div>
+        <p>Agent payment volume settled on Ovanta</p>
+        <div class="pat-chevron t-purple"></div>
+      </div>
+      <div class="stat bg-blue">
+        <small>Transactions</small>
+        <div class="stat-num t-blue" data-count="310" data-suffix="M+">310M+</div>
+        <p>Agent-initiated payments to date</p>
+        <div class="pat-chevron t-blue"></div>
+      </div>
+      <div class="stat bg-red">
+        <small>Agents</small>
+        <div class="stat-num t-red" data-count="18000" data-suffix="+">18,000+</div>
+        <p>Autonomous agents holding wallets</p>
+        <div class="pat-chevron t-red"></div>
+      </div>
+      <div class="stat bg-yellow">
+        <small>Reach</small>
+        <div class="stat-num t-yellow" data-count="140" data-suffix="+">140+</div>
+        <p>Countries, with zero FX friction</p>
+        <div class="pat-chevron t-yellow"></div>
       </div>
     </div>
   </section>
@@ -159,58 +123,34 @@
       <div class="section-head split">
         <div>
           <div class="kicker">Our thesis</div>
-          <h2>The internet is getting a new kind of customer. It can't use a credit card.</h2>
+          <h2><span class="light">The internet has a new customer.</span> <strong>It can't use a credit card.</strong></h2>
         </div>
         <p class="section-lead">
-          Today's payment rails were built for humans: business hours, chargebacks, card numbers,
-          KYC forms and settlement in days. Agents operate at machine speed, in machine-sized
-          amounts, across every border at once. Stablecoins are the first money native to the
-          internet, and the natural currency of software.
+          Payment rails were built for humans: business hours, chargebacks, card numbers and
+          settlement in days. Agents operate at machine speed, in machine-sized amounts, across
+          every border at once. Stablecoins are the first money native to the internet, and the
+          natural currency of software.
         </p>
       </div>
 
       <div class="thesis-grid">
-        <article class="thesis-card">
-          <div class="num">01</div>
-          <h3>Agents can't open bank accounts</h3>
-          <p>An AI agent can't walk into a branch or pass a card issuer's checks. A stablecoin wallet can be provisioned by code in milliseconds and governed by the business behind it.</p>
-        </article>
-        <article class="thesis-card">
-          <div class="num">02</div>
-          <h3>Micropayments finally make sense</h3>
-          <p>Card networks charge ~30¢ plus a percentage, which kills pay-per-call and pay-per-token. Stablecoin transfers cost fractions of a cent, so agents pay for exactly what they use.</p>
-        </article>
-        <article class="thesis-card">
-          <div class="num">03</div>
-          <h3>Money that is programmable</h3>
-          <p>Budgets, allowlists, escrow and conditional release live inside the money itself. Policies are enforced by code, not by a reconciliation team at month end.</p>
-        </article>
-        <article class="thesis-card">
-          <div class="num">04</div>
-          <h3>Instant, final, always on</h3>
-          <p>Agents don't sleep and neither should settlement. Stablecoins settle in under a second, 24/7, with finality. No batch windows, no weekend delays.</p>
-        </article>
-        <article class="thesis-card">
-          <div class="num">05</div>
-          <h3>Global by default</h3>
-          <p>A digital dollar works the same in Lagos, São Paulo and San Francisco. Agents can trade with anyone on the internet without correspondent banks or FX spreads.</p>
-        </article>
-        <article class="thesis-card">
-          <div class="num">06</div>
-          <h3>Fully reserved, fully transparent</h3>
-          <p>Regulated, dollar-backed stablecoins redeem 1:1 and are auditable on-chain. The stability of the dollar, on the rails of the internet.</p>
-        </article>
+        <article class="thesis-card"><div class="num bg-blue t-blue">01</div><h3>Agents can't open bank accounts</h3><p>A stablecoin wallet can be provisioned by code in milliseconds and governed by the business behind the agent.</p></article>
+        <article class="thesis-card"><div class="num bg-purple t-purple">02</div><h3>Micropayments finally work</h3><p>Cards cost ~30¢ plus a percentage. Stablecoin transfers cost fractions of a cent, so agents pay for exactly what they use.</p></article>
+        <article class="thesis-card"><div class="num bg-yellow t-yellow">03</div><h3>Money that is programmable</h3><p>Budgets, allowlists and escrow live inside the money itself, enforced by code rather than month-end reconciliation.</p></article>
+        <article class="thesis-card"><div class="num bg-green t-green">04</div><h3>Instant, final, always on</h3><p>Agents don't sleep and neither should settlement. Sub-second finality, 24/7, with no batch windows.</p></article>
+        <article class="thesis-card"><div class="num bg-red t-red">05</div><h3>Global by default</h3><p>A digital dollar works the same everywhere. No correspondent banks, no FX spreads, no borders.</p></article>
+        <article class="thesis-card"><div class="num bg-blue t-blue">06</div><h3>Fully reserved, transparent</h3><p>Regulated, dollar-backed stablecoins redeem 1:1 and are auditable on-chain.</p></article>
       </div>
     </div>
   </section>
 
   <!-- COMPARISON -->
-  <section class="section section-alt">
+  <section class="section section-blue">
+    <div class="stripe-band" aria-hidden="true"></div>
     <div class="container">
       <div class="section-head center">
         <div class="kicker">Rails compared</div>
-        <h2>Built for people vs. built for software</h2>
-        <p class="section-lead">Legacy rails were never designed for a customer that makes a million decisions a day.</p>
+        <h2><span class="light">Built for people</span> <strong>vs. built for software</strong></h2>
       </div>
       <div class="table-wrap">
         <table class="compare">
@@ -218,8 +158,8 @@
             <tr>
               <th scope="col"><span class="sr-only">Feature</span></th>
               <th scope="col">Cards</th>
-              <th scope="col">Bank wires / ACH</th>
-              <th scope="col" class="hl"><span class="th-brand"><span class="logo-dot"></span>Ovanta</span></th>
+              <th scope="col">Wires / ACH</th>
+              <th scope="col" class="hl">Ovanta</th>
             </tr>
           </thead>
           <tbody>
@@ -234,6 +174,7 @@
         </table>
       </div>
     </div>
+    <div class="stripe-band" aria-hidden="true"></div>
   </section>
 
   <!-- PLATFORM -->
@@ -241,42 +182,50 @@
     <div class="container">
       <div class="section-head">
         <div class="kicker">The platform</div>
-        <h2>Everything an agent needs to transact safely</h2>
-        <p class="section-lead">One API to give agents money, and one dashboard for humans to stay in control.</p>
+        <h2><span class="light">Everything an agent needs</span> <strong>to transact safely</strong></h2>
       </div>
 
       <div class="platform-grid">
         <article class="feature">
-          <div class="f-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10h18M16 14.5h2"/></svg></div>
+          <div class="f-icon bg-blue t-blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10h18M16 14.5h2"/></svg></div>
           <h3>Agent Wallets</h3>
-          <p>Provision a managed or self-custodied USDC wallet per agent, per task or per user with a single call. MPC key security, no seed phrases.</p>
+          <p>A USDC wallet per agent, task or user with one call. MPC key security, no seed phrases.</p>
         </article>
         <article class="feature">
-          <div class="f-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.5V12c0 4.6-3.4 7.9-8 9-4.6-1.1-8-4.4-8-9V6.5L12 3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="f-icon bg-purple t-purple"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.5V12c0 4.6-3.4 7.9-8 9-4.6-1.1-8-4.4-8-9V6.5L12 3z"/><path d="M9 12l2 2 4-4"/></svg></div>
           <h3>Spend Policies</h3>
-          <p>Daily caps, merchant allowlists, velocity limits and human approval above a threshold. Enforced before a transaction is signed.</p>
+          <p>Daily caps, merchant allowlists and human approval above a threshold, enforced before signing.</p>
         </article>
         <article class="feature">
-          <div class="f-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+          <div class="f-icon bg-yellow t-yellow"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
           <h3>Nanopayments</h3>
-          <p>Pay-per-request down to $0.0001 using HTTP 402 payment flows. Monetize APIs, data and content for agent traffic with no signup.</p>
+          <p>Pay-per-request down to $0.0001 over HTTP 402. Monetize APIs and content for agent traffic.</p>
         </article>
         <article class="feature">
-          <div class="f-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg></div>
+          <div class="f-icon bg-green t-green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg></div>
           <h3>Fiat On / Off Ramps</h3>
-          <p>Fund agent treasuries from a bank account and sweep earnings back in 40+ currencies. Stablecoins in the middle, dollars at the edges.</p>
+          <p>Fund treasuries from a bank and sweep earnings back in 40+ currencies.</p>
         </article>
         <article class="feature">
-          <div class="f-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M8 15l3.5-4 3 3L20 8"/></svg></div>
+          <div class="f-icon bg-red t-red"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M8 15l3.5-4 3 3L20 8"/></svg></div>
           <h3>Ledger &amp; Audit</h3>
-          <p>Every payment is tagged with the task, agent and principal that caused it. Export to your ERP or query in real time.</p>
+          <p>Every payment tagged with the task, agent and principal behind it. Export or query live.</p>
         </article>
         <article class="feature">
-          <div class="f-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 11l7.4-4M8.3 13l7.4 4"/></svg></div>
+          <div class="f-icon bg-blue t-blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 11l7.4-4M8.3 13l7.4 4"/></svg></div>
           <h3>Multi-chain Routing</h3>
-          <p>Ethereum, Base, Solana, Arbitrum, Polygon and Avalanche. Each payment is routed to the fastest, cheapest rail automatically.</p>
+          <p>Ethereum, Base, Solana, Arbitrum, Polygon and Avalanche, routed to the cheapest rail.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- BANNER (green block) -->
+  <section class="container banner-wrap">
+    <div class="banner bg-green">
+      <p class="banner-text">We handle the rails,<br />custody &amp; compliance.</p>
+      <p class="banner-sign">Your agents just pay.</p>
+      <div class="banner-stripes" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -284,24 +233,18 @@
   <section class="section section-dark" id="developers">
     <div class="container dev-grid">
       <div>
-        <div class="kicker light">For developers</div>
-        <h2>Give your agent a wallet in five lines</h2>
-        <p class="section-lead light">
-          Drop Ovanta into any agent framework. Works with MCP tools, function calling and
-          HTTP 402 out of the box.
-        </p>
+        <div class="kicker">For developers</div>
+        <h2><span class="light">Give your agent a wallet</span> <strong>in five lines</strong></h2>
+        <p class="section-lead">Works with MCP tools, function calling and HTTP 402 out of the box.</p>
         <ol class="steps">
           <li><span>1</span><div><b>Create a wallet</b><p>Each agent gets its own address and balance.</p></div></li>
-          <li><span>2</span><div><b>Attach a policy</b><p>Set budgets, merchants and approval rules.</p></div></li>
-          <li><span>3</span><div><b>Let it pay</b><p>Agents pay and get paid. You get a full audit trail.</p></div></li>
+          <li><span>2</span><div><b>Attach a policy</b><p>Budgets, merchants and approval rules.</p></div></li>
+          <li><span>3</span><div><b>Let it pay</b><p>Agents pay and get paid, with a full audit trail.</p></div></li>
         </ol>
-        <a href="#" class="btn btn-white">Read the docs</a>
+        <a href="#" class="btn btn-light">Read the docs</a>
       </div>
       <div class="code-card">
-        <div class="code-tabs">
-          <div class="dots"><i></i><i></i><i></i></div>
-          <span class="active">agent.ts</span><span>agent.py</span>
-        </div>
+        <div class="code-tabs"><span class="active">agent.ts</span><span>agent.py</span></div>
 <pre><code><span class="k">import</span> { Ovanta } <span class="k">from</span> <span class="s">"@ovanta/sdk"</span>;
 
 <span class="k">const</span> ovanta = <span class="k">new</span> <span class="t">Ovanta</span>({ apiKey: process.env.OVANTA_KEY });
@@ -331,59 +274,32 @@
     <div class="container">
       <div class="section-head">
         <div class="kicker">Use cases</div>
-        <h2>What agents are buying today</h2>
+        <h2><span class="light">What agents are</span> <strong>buying today</strong></h2>
       </div>
       <div class="cases">
-        <article class="case">
-          <div class="case-tag">API &amp; data</div>
-          <h3>Pay-per-call APIs</h3>
-          <p>Agents pay fractions of a cent per request for search, market data and inference, with no accounts or monthly plans.</p>
-          <div class="case-stat"><b>92%</b><span>lower cost than card-based metering</span></div>
-        </article>
-        <article class="case">
-          <div class="case-tag">Commerce</div>
-          <h3>Agentic checkout</h3>
-          <p>Shopping and travel agents complete purchases on behalf of users, within budgets the user sets once.</p>
-          <div class="case-stat"><b>3.1×</b><span>higher completion vs. handoff flows</span></div>
-        </article>
-        <article class="case">
-          <div class="case-tag">Compute</div>
-          <h3>Machine-to-machine</h3>
-          <p>Agents rent GPUs, storage and bandwidth from other agents, settling by the second as resources are consumed.</p>
-          <div class="case-stat"><b>1.2M</b><span>M2M settlements per day</span></div>
-        </article>
-        <article class="case">
-          <div class="case-tag">Publishers</div>
-          <h3>Pay-per-crawl content</h3>
-          <p>Publishers charge AI crawlers per page instead of blocking them. Revenue lands in stablecoins instantly.</p>
-          <div class="case-stat"><b>$4.7M</b><span>paid to publishers to date</span></div>
-        </article>
+        <article class="case bg-blue"><div class="case-tag t-blue">API &amp; data</div><h3>Pay-per-call APIs</h3><p>Fractions of a cent per request for search, market data and inference. No accounts, no plans.</p><div class="case-stat"><b class="t-blue">92%</b><span>lower cost than card metering</span></div></article>
+        <article class="case bg-purple"><div class="case-tag t-purple">Commerce</div><h3>Agentic checkout</h3><p>Shopping and travel agents buy on a user's behalf, within budgets set once.</p><div class="case-stat"><b class="t-purple">3.1×</b><span>higher completion vs. handoffs</span></div></article>
+        <article class="case bg-yellow"><div class="case-tag t-yellow">Compute</div><h3>Machine-to-machine</h3><p>Agents rent GPUs and storage from other agents, settling by the second.</p><div class="case-stat"><b class="t-yellow">1.2M</b><span>M2M settlements per day</span></div></article>
+        <article class="case bg-red"><div class="case-tag t-red">Publishers</div><h3>Pay-per-crawl</h3><p>Publishers charge AI crawlers per page instead of blocking them.</p><div class="case-stat"><b class="t-red">$4.7M</b><span>paid to publishers to date</span></div></article>
       </div>
     </div>
   </section>
 
   <!-- MARKET + TRUST -->
-  <section class="section section-alt">
+  <section class="section section-soft">
     <div class="container">
       <div class="market">
         <div>
           <div class="kicker">The opportunity</div>
-          <h2>A multi-trillion dollar shift, already underway</h2>
-          <p class="section-lead">
-            Stablecoins already settle more value than many card networks. As agents take on more
-            of the internet's work, a growing share of commerce will be initiated by software and
-            settled in digital dollars.
-          </p>
+          <h2><span class="light">A multi-trillion dollar shift,</span> <strong>already underway</strong></h2>
+          <p class="section-lead">As agents take on more of the internet's work, a growing share of commerce will be initiated by software and settled in digital dollars.</p>
           <div class="market-kpi">
             <div><b>58×</b><span>growth 2025–2030</span></div>
             <div><b>$5.8T</b><span>projected by 2030</span></div>
           </div>
         </div>
         <figure class="chart-card">
-          <figcaption class="chart-head">
-            <span>Agent-initiated payment volume</span>
-            <span class="chip">USD, trillions</span>
-          </figcaption>
+          <figcaption class="chart-head"><span>Agent-initiated payment volume</span><span class="chip">USD, trillions</span></figcaption>
           <div class="bars">
             <div class="b" style="--v:.017"><span>0.1</span><i></i><em>2025</em></div>
             <div class="b" style="--v:.07"><span>0.4</span><i></i><em>2026</em></div>
@@ -397,41 +313,27 @@
       </div>
 
       <div class="trust">
-        <div class="trust-item">
-          <span class="t-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.5V12c0 4.6-3.4 7.9-8 9-4.6-1.1-8-4.4-8-9V6.5L12 3z"/><path d="M9 12l2 2 4-4"/></svg></span>
-          <div><h4>SOC 2 Type II</h4><p>Independently audited controls.</p></div>
-        </div>
-        <div class="trust-item">
-          <span class="t-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></span>
-          <div><h4>MPC custody</h4><p>No single point of key compromise.</p></div>
-        </div>
-        <div class="trust-item">
-          <span class="t-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M2 10l10-6 10 6"/></svg></span>
-          <div><h4>Regulated partners</h4><p>Licensed money transmission and reserves.</p></div>
-        </div>
-        <div class="trust-item">
-          <span class="t-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span>
-          <div><h4>Real-time screening</h4><p>Sanctions and risk checks on every transfer.</p></div>
-        </div>
+        <div class="trust-item"><h4>SOC 2 Type II</h4><p>Independently audited controls.</p></div>
+        <div class="trust-item"><h4>MPC custody</h4><p>No single point of key compromise.</p></div>
+        <div class="trust-item"><h4>Regulated partners</h4><p>Licensed transmission and reserves.</p></div>
+        <div class="trust-item"><h4>Real-time screening</h4><p>Sanctions checks on every transfer.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-wrap" id="contact">
-    <div class="container">
-      <div class="cta">
-        <div class="cta-copy">
-          <h2>Give your agents money they can actually use.</h2>
-          <p>Join 1,200+ teams building on Ovanta. Get API keys in minutes.</p>
-        </div>
-        <form class="cta-form" id="ctaForm">
-          <label for="ctaEmail" class="sr-only">Work email</label>
-          <input id="ctaEmail" type="email" placeholder="Work email" required />
-          <button class="btn btn-white" type="submit">Request access</button>
-        </form>
-      </div>
+  <!-- CTA (stripe-framed panel) -->
+  <section class="cta" id="contact">
+    <div class="stripe-band" aria-hidden="true"></div>
+    <div class="container cta-inner">
+      <h2><span class="light">Give your agents money</span><br /><strong>they can actually use.</strong></h2>
+      <p>Join 1,200+ teams building on Ovanta.</p>
+      <form class="cta-form" id="ctaForm">
+        <label for="ctaEmail" class="sr-only">Work email</label>
+        <input id="ctaEmail" type="email" placeholder="Work email" required />
+        <button class="btn btn-dark" type="submit">Get in touch</button>
+      </form>
     </div>
+    <div class="stripe-band" aria-hidden="true"></div>
   </section>
 
   </main>
@@ -442,13 +344,10 @@
       <div class="footer-top">
         <div class="footer-brand">
           <a href="#" class="logo" aria-label="Ovanta home">
-            <span class="logo-mark">
-              <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><circle cx="16" cy="16" r="12.5" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="16" cy="16" r="4.5" fill="currentColor"/></svg>
-            </span>
-            Ovanta
+            <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><circle cx="16" cy="16" r="12.5" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="16" cy="16" r="4.5" fill="currentColor"/></svg>
+            ovanta
           </a>
           <p>The payments layer for the agent economy.</p>
-          <div class="status"><i></i>All systems operational</div>
         </div>
         <nav class="footer-links" aria-label="Footer">
           <div><h5>Product</h5><a href="#platform">Wallets</a><a href="#platform">Policies</a><a href="#platform">Nanopayments</a></div>
@@ -458,13 +357,11 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 Ovanta, Inc.</span>
-        <div class="footer-legal">
-          <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclosures</a>
-        </div>
+        <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclosures</a></div>
         <div class="social">
-          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg></a>
-          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 015 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0012 2z"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9.5h4V21H3V9.5zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6.1V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.5z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 015 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0012 2z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9.5h4V21H3V9.5zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6.1V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.5z"/></svg></a>
         </div>
       </div>
       <p class="disclaimer">Ovanta is a technology company, not a bank. Stablecoin services are provided through licensed partners. Figures on this page are illustrative.</p>
