@@ -295,6 +295,10 @@ pre { padding: 24px 26px 28px; overflow-x: auto; font-family: var(--mono); font-
   .trust { grid-template-columns: 1fr 1fr; }
 }
 
+@media (max-width: 940px) {
+  .footer-top { flex-direction: column; gap: 40px; }
+}
+
 @media (max-width: 760px) {
   body { font-size: 16px; }
   .container { padding: 0 20px; }
@@ -311,6 +315,8 @@ pre { padding: 24px 26px 28px; overflow-x: auto; font-family: var(--mono); font-
   .nav-mobile-cta { display: inline-flex; margin-top: 8px; }
   .hero-panel { padding: 120px 20px 56px; }
   .hero-left { padding: 48px 20px; }
+  h1 .light { font-size: min(38px, 11vw); }
+  h1 strong { font-size: min(54px, 15.5vw); }
   .hero-actions .btn-dark { flex: 1; }
   .balance { font-size: 30px; }
   .stats { padding-top: 64px; }
@@ -328,7 +334,6 @@ pre { padding: 24px 26px 28px; overflow-x: auto; font-family: var(--mono); font-
   .trust { gap: 24px; margin-top: 64px; }
   .cta-form { flex-direction: column; border-radius: 22px; }
   .cta-form input { height: 46px; }
-  .footer-top { flex-direction: column; gap: 40px; }
   .footer-links { grid-template-columns: repeat(2, 1fr); }
   .footer-bottom { flex-wrap: wrap; gap: 16px 24px; }
   .social { margin-left: 0; width: 100%; }
